@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mickey Lafa Profile</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+        body { height: 100vh; display: flex; justify-content: center; align-items: center; background: #000; overflow: hidden; }
+        
+        /* วิดีโอพื้นหลัง */
+        #bg-video { position: fixed; right: 0; bottom: 0; min-width: 100%; min-height: 100%; object-fit: cover; z-index: -1; }
+
+        /* หน้า Landing (ปุ่มกดเข้า) */
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: flex; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; color: white; font-size: 1.5rem; }
+        
+        /* การ์ดโปรไฟล์ */
+        .card { background: rgba(255,255,255,0.9); padding: 20px; border-radius: 20px; width: 90%; max-width: 400px; text-align: center; backdrop-filter: blur(10px); }
+        .avatar { width: 100px; height: 100px; border-radius: 50%; margin-bottom: 10px; border: 3px solid #fff; }
+        .btn { display: block; background: #333; color: white; padding: 12px; margin-top: 10px; border-radius: 10px; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <div id="overlay" onclick="start()">แตะหน้าจอเพื่อเข้าสู่เว็บไซต์</div>
+
+    <audio id="audio" src="music.mp3" loop></audio>
+    <video id="bg-video" autoplay muted loop playsinline><source src="background.mp4" type="video/mp4"></video>
+
+    <div class="card">
+        <img src="https://i.postimg.cc/3R8cXTF1/IMG-8991.jpg" class="avatar">
+        <h1>Mickey Lafa</h1>
+        <p>Digital Merchant & Developer</p>
+        <a href="https://discord.gg/NCEBB2BNaf" class="btn">Discord Shop</a>
+        <a href="https://tiktok.com/@upze12" class="btn">TikTok</a>
+    </div>
+
+    <script>
+        function start() {
+            document.getElementById('audio').play();
+            document.getElementById('overlay').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
