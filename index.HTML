@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mickey Lafa Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Prompt', sans-serif; }
+        body { min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; background-color: #1a1a1a; overflow: hidden; }
+        
+        #landing-page { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0, 0, 0, 0.95); z-index: 9999; 
+            display: flex; flex-direction: column; justify-content: center; 
+            align-items: center; color: white; cursor: pointer; 
+            transition: opacity 0.8s ease; 
+        }
+
+        .video-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
+        .profile-card { background: white; width: 100%; max-width: 500px; border-radius: 20px; overflow: hidden; padding-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .banner { width: 100%; height: 180px; object-fit: cover; }
+        .avatar-container { text-align: center; margin-top: -60px; margin-bottom: 10px; }
+        .avatar { width: 120px; height: 120px; border-radius: 50%; border: 6px solid white; object-fit: cover; }
+        .info { text-align: center; margin-bottom: 25px; }
+        .info h1 { font-size: 1.5rem; color: #333; }
+        .info p { color: #777; font-size: 0.9rem; }
+
+        .links-container { padding: 0 20px; display: flex; flex-direction: column; gap: 12px; }
+        .btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 15px; border-radius: 50px; background: #f8f8f8; color: #333; text-decoration: none; font-weight: 500; border: 1px solid #eee; transition: all 0.2s; cursor: pointer; }
+        .btn:hover { background: #eee; transform: translateY(-2px); }
+        .btn span { margin-right: 10px; font-size: 1.2rem; }
+
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); }
+        .modal-content { background-color: #fff; margin: 15% auto; padding: 20px; border-radius: 15px; width: 80%; max-width: 300px; text-align: center; position: relative; }
+        .close-btn { position: absolute; top: 10px; right: 15px; font-size: 20px; cursor: pointer; }
+        .qr-img { width: 100%; max-width: 200px; height: auto; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <div id="landing-page" onclick="startExperience()">
+        <h1 style="margin-bottom: 10px;">แตะเพื่อเข้าสู่ระบบ</h1>
+    </div>
+
+    <audio id="bg-music" src="1234.mp3" loop></audio>
+
+    <video autoplay loop muted playsinline class="video-bg">
+        <source src="background.mp4" type="video/mp4">
+    </video>
+
+    <div class="profile-card">
+        <img src="https://i.postimg.cc/G26gZy1G/Chat-GPT-Image-30-th-kh-2568-13-10-20.png" class="banner" alt="Banner">
+        <div class="avatar-container">
+            <img src="https://i.postimg.cc/3R8cXTF1/IMG-8991.jpg" class="avatar" alt="Mickey Lafa">
+        </div>
+        <div class="info">
+            <h1>Mickey Lafa</h1>
+            <p>Love Carrot 🥕🐽</p>
+        </div>
+
+        <div class="links-container">
+            <a href="https://discord.gg/NCEBB2BNaf" class="btn"><span>🛒</span> Discord Shop</a>
+            <a href="https://discord.gg/c3Ur877pU9" class="btn"><span>🫍</span>DC Gang NSL</a>
+            <a href="https://tiktok.com/@upze12" class="btn"><span>🛟</span>TikTok</a>
+            <button class="btn" onclick="openModal()"><span>🎫</span> โดเนทสนับสนุน</button>
+        </div>
+    </div>
+
+    <div id="donateModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3>สแกนเพื่อโดเนท</h3>
+            <img src="https://i.postimg.cc/L8W0XsGj/IMG-6393.jpg" class="qr-img" alt="QR Code">
+        </div>
+    </div>
+
+    <script>
+        const audio = document.getElementById("bg-music");
+        const landing = document.getElementById("landing-page");
+
+        function startExperience() {
+            audio.play().then(() => {
+                landing.style.opacity = "0";
+                setTimeout(() => { landing.style.display = "none"; }, 800);
+            }).catch(e => {
+                console.log("Audio play error:", e);
+                landing.style.display = "none";
+            });
+        }
+
+        function openModal() { document.getElementById("donateModal").style.display = "block"; }
+        function closeModal() { document.getElementById("donateModal").style.display = "none"; }
+        window.onclick = function(event) { if (event.target == document.getElementById("donateModal")) { closeModal(); } }
+    </script>
+</body>
+</html>
